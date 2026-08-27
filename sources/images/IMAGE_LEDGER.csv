@@ -1,0 +1,10 @@
+id,destination,subject,local_path,source_page,direct_asset_url,publisher,creator,license_or_terms,retrieved_at,intended_use,status,notes
+museum-candidate-01,hebei-museum,河北博物院或展览宣传图,,https://www.hebeimuseum.org.cn/,https://www.hebeimuseum.org.cn/uploadfile/2026/0701/20260701093920654.jpg,河北博物院,未标注,未发现公开复用许可,2026-08-27,目的地主图,permission-needed,只作为候选；发布版使用占位图直至取得许可并核对图片内容
+xibaipo-candidate-01,xibaipo,西柏坡纪念馆,,https://www.xbpjng.cn/,https://www.xbpjng.cn/images/38834ddf-8136-4054-80f4-4b5cf5b1f48f/202406/04/%E8%A5%BF%E6%9F%8F%E5%9D%A1%E7%BA%AA%E5%BF%B5%E7%A2%9120240604105738186.jpg,西柏坡纪念馆,未标注,未发现公开复用许可,2026-08-27,目的地主图,permission-needed,只作为候选；不下载到发布资源目录
+langya-candidate-01,langya-mountain,五勇士雕塑广场,,http://www.lysjq.net/,https://omo-oss-image.thefastimg.com/portal-saas/pg2024053116142001345/cms/image/ec91923c-504d-4620-80a8-2972ed49c5eb.jpg,易县狼牙山建设开发管理有限公司,未标注,未发现公开复用许可,2026-08-27,目的地主图,permission-needed,只作为候选；发布版使用占位图直至取得许可
+langya-candidate-02,langya-mountain,狼牙山五勇士陈列馆,,http://www.lysjq.net/,https://omo-oss-image.thefastimg.com/portal-saas/pg2024053116142001345/cms/image/415e230c-016f-42f6-9dee-16d73f52a3d5.jpg,易县狼牙山建设开发管理有限公司,未标注,未发现公开复用许可,2026-08-27,景点图片,permission-needed,只作为候选；发布版使用占位图直至取得许可
+placeholder-museum,hebei-museum,多图轮播占位组,由前端生成,,,项目自有,项目自有,项目自有,2026-08-27,目的地及各展厅多图缺图状态,approved,首页气泡和详情页按外观、入口、展厅、展品等不同用途生成独立占位页
+placeholder-xibaipo,xibaipo,多图轮播占位组,由前端生成,,,项目自有,项目自有,项目自有,2026-08-27,目的地及各旧址多图缺图状态,approved,首页气泡和详情页按入口、纪念馆、院落、会址等不同用途生成独立占位页
+placeholder-langya,langya-mountain,多图轮播占位组,由前端生成,,,项目自有,项目自有,项目自有,2026-08-27,目的地及山地景点多图缺图状态,approved,首页气泡和详情页按全景、陈列馆、步道、纪念塔等不同用途生成独立占位页
+museum-research-map-01,hebei-museum,官方交通指南,sources/research/hebei-museum/traffic-guide-official.jpg,https://www.hebeimuseum.org.cn/list-1-1.html,https://www.hebeimuseum.org.cn/statics/images/fuwu/jtzn.jpg,河北博物院,未标注,仅限内部研究,2026-08-27,人工核验交通关系,research-only,不得复制到 public 或发布页面
+museum-research-map-02,hebei-museum,官方基本陈列路线,sources/research/hebei-museum/floor-route-official.jpg,https://www.hebeimuseum.org.cn/list-1-1.html,https://www.hebeimuseum.org.cn/statics/images/fuwu/dlxlt.jpg,河北博物院,未标注,仅限内部研究,2026-08-27,人工核验展厅楼层和编号,research-only,不得复制到 public 或发布页面
