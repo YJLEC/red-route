@@ -12,13 +12,14 @@ interface FootstepSegment {
   id: string
   from: RouteSpot
   to: RouteSpot
+  branch?: boolean
 }
 
-function RouteFootprint({ x, y, angle, side, delay }: { x: number; y: number; angle: number; side: 'left' | 'right'; delay: number }) {
+function RouteFootprint({ x, y, angle, side, branch, delay, duration }: { x: number; y: number; angle: number; side: 'left' | 'right'; branch: boolean; delay: number; duration: number }) {
   return (
     <g
-      className={`route-footprint route-footprint--${side}`}
-      style={{ animationDelay: `${delay}s` }}
+      className={`route-footprint route-footprint--${side}${branch ? ' route-footprint--branch' : ''}`}
+      style={{ animationDelay: `${delay}s`, animationDuration: `${duration}s` }}
       transform={`translate(${x} ${y}) rotate(${angle})`}
       aria-hidden="true"
     >
@@ -30,7 +31,7 @@ function RouteFootprint({ x, y, angle, side, delay }: { x: number; y: number; an
   )
 }
 
-function RouteFootsteps({ segments, branch = false }: { segments: FootstepSegment[]; branch?: boolean }) {
+function RouteFootsteps({ segments }: { segments: FootstepSegment[] }) {
   const footsteps = segments.flatMap((segment, segmentIndex) => {
     const dx = segment.to.x - segment.from.x
     const dy = segment.to.y - segment.from.y
@@ -40,7 +41,7 @@ function RouteFootsteps({ segments, branch = false }: { segments: FootstepSegmen
     const stepCount = Math.max(5, Math.round(length / 5))
     const normalX = -dy / length
     const normalY = dx / length
-    const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90
+    const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 270
 
     return Array.from({ length: stepCount }, (_, stepIndex) => {
       const progress = (stepIndex + 0.65) / (stepCount + 0.3)
@@ -52,14 +53,17 @@ function RouteFootsteps({ segments, branch = false }: { segments: FootstepSegmen
         y: segment.from.y + dy * progress + normalY * offset,
         angle,
         side,
-        delay: (segmentIndex * stepCount + stepIndex) * 0.32,
+        branch: Boolean(segment.branch),
       } as const
     })
   })
+  const animationDuration = footsteps.length * 0.32 + 3.2
 
   return (
-    <g className={branch ? 'route-footsteps route-footsteps--branch' : 'route-footsteps'}>
-      {footsteps.map((footstep) => <RouteFootprint key={footstep.id} {...footstep} />)}
+    <g className="route-footsteps">
+      {footsteps.map((footstep, index) => (
+        <RouteFootprint key={footstep.id} {...footstep} delay={index * 0.32} duration={animationDuration} />
+      ))}
     </g>
   )
 }
@@ -70,8 +74,10 @@ function buildPath(spots: RouteSpot[]) {
 
 export function RouteExplorer({ destination }: RouteExplorerProps) {
   const [activeSpotId, setActiveSpotId] = useState(destination.spots[0].id)
+  const [focusedSpotId, setFocusedSpotId] = useState<string | null>(null)
   const [feedbackTick, setFeedbackTick] = useState(0)
   const activeSpot = destination.spots.find((spot) => spot.id === activeSpotId) ?? destination.spots[0]
+  const focusedSpot = destination.spots.find((spot) => spot.id === focusedSpotId) ?? null
   const mainSpots = destination.spots.filter((spot) => !spot.branch)
   const mainPath = buildPath(mainSpots)
   const mainSegments = useMemo(() => mainSpots.slice(1).map((spot, index) => ({
@@ -85,13 +91,14 @@ export function RouteExplorer({ destination }: RouteExplorerProps) {
     return {
       id: spot.id,
       path: `M${previous.x} ${previous.y} L${spot.x} ${spot.y}`,
-      segment: { id: `${previous.id}-${spot.id}`, from: previous, to: spot },
+      segment: { id: `${previous.id}-${spot.id}`, from: previous, to: spot, branch: true },
     }
   }), [destination.spots, mainSpots])
   const activeIndex = destination.spots.findIndex((spot) => spot.id === activeSpot.id)
 
   function selectSpot(id: string) {
     setActiveSpotId(id)
+    setFocusedSpotId(id)
     setFeedbackTick((value) => value + 1)
   }
 
@@ -106,9 +113,13 @@ export function RouteExplorer({ destination }: RouteExplorerProps) {
         <small>{String(activeIndex + 1).padStart(2, '0')} / {String(destination.spots.length).padStart(2, '0')}</small>
       </div>
       <div className="route-layout">
-        <div className={`route-map route-map--${destination.mapStyle}`}>
+        <div className={`route-map route-map--${destination.mapStyle}`} onClick={() => setFocusedSpotId(null)}>
           <div className="route-map__legend"><span><i className="legend-main" />步行主路线</span><span><i className="legend-branch" />选走支线</span><span><Footprints aria-hidden="true" />足迹表示徒步</span></div>
-          <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-label={`${destination.name}导览底图`} role="img">
+          <div
+            className={focusedSpot ? 'route-map-focus-layer is-focused' : 'route-map-focus-layer'}
+            style={{ transformOrigin: focusedSpot ? `${focusedSpot.x}% ${focusedSpot.y}%` : '50% 50%' }}
+          >
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-label={`${destination.name}导览底图`} role="img">
             {destination.mapStyle === 'floor' && (
               <g className="floor-plan">
                 <path d="M7 12H93V87H7Z"/><path d="M30 12V59M55 12V59M78 12V59M7 59H93"/>
@@ -133,26 +144,26 @@ export function RouteExplorer({ destination }: RouteExplorerProps) {
             )}
             <path className="route-line" d={mainPath} />
             {branchPaths.map((branch) => <path key={branch.id} className="route-branch-line" d={branch.path} />)}
-            <RouteFootsteps segments={mainSegments} />
-            {branchPaths.map((branch) => <RouteFootsteps key={branch.id} segments={[branch.segment]} branch />)}
-          </svg>
-          {destination.mapFeatures.map((feature) => (
-            <span key={feature.id} className={`map-feature map-feature--${feature.type}`} style={{ left: `${feature.x}%`, top: `${feature.y}%` }}>
-              <Info aria-hidden="true" /><small>{feature.label}</small>
-            </span>
-          ))}
-          {destination.spots.map((spot) => (
-            <button
-              key={spot.id}
-              type="button"
-              className={spot.id === activeSpot.id ? 'route-point is-active' : 'route-point'}
-              style={{ left: `${spot.x}%`, top: `${spot.y}%` }}
-              aria-pressed={spot.id === activeSpot.id}
-              onClick={() => selectSpot(spot.id)}
-            >
-              <span>{spot.order}</span><small>{spot.name}</small>
-            </button>
-          ))}
+              <RouteFootsteps segments={[...mainSegments, ...branchPaths.map((branch) => branch.segment)]} />
+            </svg>
+            {destination.mapFeatures.map((feature) => (
+              <span key={feature.id} className={`map-feature map-feature--${feature.type}`} style={{ left: `${feature.x}%`, top: `${feature.y}%` }}>
+                <Info aria-hidden="true" /><small>{feature.label}</small>
+              </span>
+            ))}
+            {destination.spots.map((spot) => (
+              <button
+                key={spot.id}
+                type="button"
+                className={spot.id === activeSpot.id ? 'route-point is-active' : 'route-point'}
+                style={{ left: `${spot.x}%`, top: `${spot.y}%` }}
+                aria-pressed={spot.id === activeSpot.id}
+                onClick={(event) => { event.stopPropagation(); selectSpot(spot.id) }}
+              >
+                <span>{spot.order}</span><small>{spot.name}</small>
+              </button>
+            ))}
+          </div>
           <span className="route-map__disclaimer">
             依据官方导览资料重绘 · 开放区域以景区标识为准
             <a href={destination.guideMapSource.url} target="_blank" rel="noreferrer">
