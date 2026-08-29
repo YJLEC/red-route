@@ -29,6 +29,7 @@ export function SiteHeader() {
               {destination.shortName}
             </NavLink>
           ))}
+          <NavLink to="/planner" onClick={() => setOpen(false)}>行程规划</NavLink>
         </nav>
       </div>
     </header>

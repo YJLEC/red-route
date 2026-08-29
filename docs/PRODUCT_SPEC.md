@@ -2,7 +2,7 @@
 
 ## 产品任务
 
-当前版本帮助游客完成发现三个首页目的地、理解位置关系、确定怎样抵达和确定到达后怎样游览。下一版增加第四个目的地、独立的多地比较与串联行程规划，详细规格见 `docs/PRODUCT_SPEC_V2.md`。网站不承担实践活动汇报任务。
+当前版本帮助游客从首页发现四个目的地、理解位置关系、确定怎样抵达和确定到达后怎样游览，并通过独立页面完成多地比较与串联行程规划，详细规格见 `docs/PRODUCT_SPEC_V2.md`。网站不承担实践活动汇报任务。
 
 ## 核心用户流程
 
@@ -33,7 +33,7 @@
 - `/destination/hebei-museum`：城市博物馆室内展线；
 - `/destination/xibaipo`：纪念馆与旧址群分层路线；
 - `/destination/langya-mountain`：山地爬升路线；
-- `/destination/ranzhuang-tunnel`：冉庄地道战博物馆导览；
+- `/destination/ranzhuang-tunnel`：冉庄地道战纪念馆导览；
 - `/planner`：四地勾选、简要比较与串联行程；
 - 404：返回河北总览。
 

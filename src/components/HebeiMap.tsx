@@ -110,7 +110,7 @@ export function HebeiMap({ destinations, activeId, onSelect }: HebeiMapProps) {
             className={focusState ? 'map-focus-layer is-focused' : 'map-focus-layer'}
             style={{ transformOrigin: focusedPoint ? `${(focusedPoint[0] / width) * 100}% ${(focusedPoint[1] / height) * 100}%` : '50% 50%' }}
           >
-            <svg className="hebei-map" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="河北省地级市轮廓和三个目的地的位置关系">
+            <svg className="hebei-map" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="河北省地级市轮廓和四个目的地的位置关系">
               <g className="prefecture-layer">
                 {drawing.paths.map(({ name, d }) => <path key={name} className={focusedDestination && name.includes(focusedDestination.city.slice(0, 3)) ? 'is-related' : ''} d={d}><title>{name}</title></path>)}
               </g>

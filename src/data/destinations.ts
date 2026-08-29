@@ -370,13 +370,7 @@ export const destinations: Destination[] = [
   },
 ]
 
-const homeDestinationIds: DestinationId[] = ['hebei-museum', 'xibaipo', 'langya-mountain']
-
-export const homeDestinations = homeDestinationIds.map((id) => {
-  const destination = destinations.find((item) => item.id === id)
-  if (!destination) throw new Error(`首页目的地数据缺失：${id}`)
-  return destination
-})
+export const homeDestinations = destinations
 
 export function getDestination(id: string | undefined): Destination | undefined {
   return destinations.find((destination) => destination.id === id)

@@ -1,6 +1,7 @@
 import { AlertTriangle, ArrowRight, Bus, CalendarDays, Car, Check, Clock3, ExternalLink, Gauge, Hotel, Info, MapPin, RefreshCw, Route, Utensils } from 'lucide-react'
 import { useRef } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import { PlannerGeographyMap } from '../components/PlannerGeographyMap'
 import { destinations } from '../data/destinations'
 import { planningDataset, planningPlaces, travelBases } from '../data/planner'
 import { createItinerary, formatMinute } from '../lib/itinerary'
@@ -28,32 +29,6 @@ function eventIcon(event: ItineraryEvent) {
   if (event.type === 'stay') return <Hotel aria-hidden="true" />
   if (event.type === 'buffer') return <Clock3 aria-hidden="true" />
   return <MapPin aria-hidden="true" />
-}
-
-function GeographyMap({ selectedIds, order }: { selectedIds: DestinationId[]; order: DestinationId[] }) {
-  const selected = new Set(selectedIds)
-  const points = destinations.map((destination) => {
-    const [lon, lat] = destination.coordinates
-    return { ...destination, x: ((lon - 113.55) / (115.95 - 113.55)) * 100, y: ((39.55 - lat) / (39.55 - 37.8)) * 100 }
-  })
-  const linePoints = order.map((id) => points.find((point) => point.id === id)).filter(Boolean)
-  return (
-    <div className="planner-map" aria-label="四地真实地理关系图">
-      <iframe title="河北四地 OpenStreetMap 底图" src="https://www.openstreetmap.org/export/embed.html?bbox=113.55%2C37.8%2C115.95%2C39.55&layer=mapnik" loading="lazy" />
-      <svg className="planner-map__route" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        {linePoints.slice(1).map((point, index) => {
-          const before = linePoints[index]
-          return point && before ? <line key={`${before.id}-${point.id}`} x1={before.x} y1={before.y} x2={point.x} y2={point.y} /> : null
-        })}
-      </svg>
-      {points.map((point) => (
-        <div key={point.id} className={`planner-map__pin ${selected.has(point.id) ? 'is-selected' : ''}`} style={{ left: `${point.x}%`, top: `${point.y}%` }}>
-          <span>{order.indexOf(point.id) + 1 || ''}</span><small>{point.shortName}</small>
-        </div>
-      ))}
-      <div className="planner-map__legend">真实底图：OpenStreetMap · 连线表示推荐访问顺序，不替代实时导航</div>
-    </div>
-  )
 }
 
 export function PlannerPage() {
@@ -122,7 +97,7 @@ export function PlannerPage() {
             <button className="generate-button" type="button" disabled={selectedIds.length < 2} onClick={() => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}><RefreshCw aria-hidden="true" />生成 / 更新行程</button>
             <p className="planner-boundary">静态建议，不读取实时路况、班次、商家营业或酒店库存。</p>
           </div>
-          <GeographyMap selectedIds={selectedIds} order={primary?.placeOrder ?? selectedIds} />
+          <PlannerGeographyMap selectedIds={selectedIds} order={primary?.placeOrder ?? selectedIds} />
         </div>
 
         <div ref={resultRef} className="planner-result" aria-live="polite">

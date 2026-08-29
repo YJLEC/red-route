@@ -33,7 +33,7 @@ pnpm build
 pnpm preview
 ```
 
-在桌面和手机尺寸检查首页地图、三地详情、路线点位联动、菜单、外部来源链接和高德搜索入口。构建产物中应存在 `dist/_redirects` 和 `dist/data/hebei.geojson`。
+在桌面和手机尺寸检查首页四地地图、四个详情页、路线点位联动、菜单、外部来源链接和高德搜索入口。构建产物中应存在 `dist/_redirects` 和 `dist/data/hebei.geojson`。
 
 公开仓库还应在推送前检查：
 
