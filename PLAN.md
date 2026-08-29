@@ -438,7 +438,7 @@
 
 当前证据：`pnpm lint`、`pnpm typecheck`、`pnpm build` 已通过；两组 Vitest 共 26 项通过，覆盖 6 个两地、4 个三地、1 个四地组合，以及闭馆、非法日期、单日不足、公交方向、运营日、跨日落脚连续性、午餐和末日返程。规划页三档截图保存于 `sources/baseline/v2-planner/`；三档均无横向溢出，桌面 / 平板 / 手机分别为四列 / 两列 / 单列。V2.1 首页为 4 个地图点、4 个备用按钮，页眉含四地和规划入口，仍无规划页正文回流。
 
-生产验收：提交 `20eb570` 经 GitHub 触发 Cloudflare Pages 构建，自定义域名与 Pages 域名均切换到 `index-BCqd4NNC.js`。`/planner`、`/destination/ranzhuang-tunnel` 和首页直达均返回并运行新版本；V2.1 将继续核验 Leaflet 地图实际瓦片与首页四地点位，不能再只确认地图容器存在。
+生产验收：V2.1 代码提交 `f5b78c6` 与加载反馈提交 `2619cee` 经 GitHub 触发 Cloudflare Pages 构建，自定义域名已切换到 `index-CKGEWnRb.js`。`/planner` 实测 11 张 256×256 有效地图瓦片、3 段 OSRM 道路轨迹和 4 个交互点位，状态为 `ready` 且加载提示正常消失；首页实测 4 个地图点、4 个底部切换项和含四地及规划入口的页眉，冉庄点击后气泡、摘要与选中状态一致，页面无横向溢出，浏览器控制台无错误或警告。
 
 退出条件：
 
