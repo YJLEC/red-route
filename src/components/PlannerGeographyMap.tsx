@@ -54,10 +54,14 @@ export function PlannerGeographyMap({ selectedIds, order }: PlannerGeographyMapP
       crossOrigin: true,
     })
     let tileFailures = 0
-    tiles.on('load', () => setTileState('ready'))
+    let hasLoadedTile = false
+    tiles.on('tileload', () => {
+      hasLoadedTile = true
+      setTileState('ready')
+    })
     tiles.on('tileerror', () => {
       tileFailures += 1
-      if (tileFailures >= 4) setTileState('error')
+      if (tileFailures >= 4 && !hasLoadedTile) setTileState('error')
     })
     tiles.addTo(map)
 
