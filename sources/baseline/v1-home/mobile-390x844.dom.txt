@@ -1,0 +1,62 @@
+- banner:
+  - link "数忆红途":
+    - /url: /
+    - strong: 数忆红途
+  - button "打开导航":
+- main:
+  - region "河北目的地地图":
+    - paragraph: 从位置开始规划
+    - heading "河北红色旅游地图" [level=1]
+    - generic: 地市边界与目的地坐标数据 · 点击标记聚焦
+    - img "河北省地级市轮廓和三个目的地的位置关系":
+      - generic "石家庄市"
+      - generic "唐山市"
+      - generic "秦皇岛市"
+      - generic "邯郸市"
+      - generic "邢台市"
+      - generic "保定市"
+      - generic "张家口市"
+      - generic "承德市"
+      - generic "沧州市"
+      - generic "廊坊市"
+      - generic "衡水市"
+    - button "河北博物院" [pressed]:
+      - generic: 河北博物院
+    - button "西柏坡":
+      - generic: 西柏坡
+    - button "狼牙山":
+      - generic: 狼牙山
+    - generic "选择目的地":
+      - button "河北博物院 1.5-2 小时 · 强度低":
+        - generic: 河北博物院
+        - generic: 1.5-2 小时 · 强度低
+      - button "西柏坡 3-4 小时 · 强度中":
+        - generic: 西柏坡
+        - generic: 3-4 小时 · 强度中
+      - button "狼牙山 4-6 小时 · 强度高":
+        - generic: 狼牙山
+        - generic: 4-6 小时 · 强度高
+  - complementary:
+    - article:
+      - text: 石家庄市 · 城市博物馆
+      - heading "河北博物院红色展厅" [level=2]
+      - paragraph: 交通最轻松的室内红色文化行程
+      - paragraph: 以常设陈列《抗日烽火——英雄河北》为稳定参观锚点，通过文物、历史图片与分单元叙事，适合与石家庄市区行程组合。
+      - term:
+        - text: 建议用时
+      - definition: 1.5-2 小时
+      - term:
+        - text: 游览强度
+      - definition: 低 · 室内展陈
+      - paragraph:
+        - generic: 适合
+        - text: 亲子、长者、城市短途游客
+      - link "查看路线与抵达方式":
+        - /url: /destination/hebei-museum
+        - text: 查看路线与抵达方式
+- contentinfo:
+  - strong: 数忆红途
+  - paragraph: 面向游客的河北红色旅游探索与出行指南
+  - button "回到顶部":
+    - text: 回到顶部
+  - generic: 地图依据官方导览和公开地理资料重绘，不替代现场开放标识或实时导航。

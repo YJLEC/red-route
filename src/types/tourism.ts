@@ -1,6 +1,6 @@
-export type DestinationId = 'hebei-museum' | 'xibaipo' | 'langya-mountain'
+export type DestinationId = 'hebei-museum' | 'xibaipo' | 'langya-mountain' | 'ranzhuang-tunnel'
 
-export type MapStyle = 'floor' | 'campus' | 'mountain'
+export type MapStyle = 'floor' | 'campus' | 'mountain' | 'village'
 
 export type ArrivalMode = '公共交通' | '自驾' | '换乘提示'
 
@@ -82,6 +82,30 @@ export interface SourceRecord {
   verifiedAt: string
 }
 
+export interface OpeningPeriod {
+  label: string
+  openTime: string
+  closeTime: string
+  lastEntryTime?: string
+}
+
+export interface OpeningSource {
+  label: string
+  url: string
+}
+
+export interface OpeningSchedule {
+  status: 'confirmed' | 'conflicting'
+  regularDays: string
+  openWeekdays: number[]
+  periods: OpeningPeriod[]
+  closedDays: string[]
+  reservation?: string
+  exceptions: string
+  sources: OpeningSource[]
+  verifiedAt: string
+}
+
 export interface Destination {
   id: DestinationId
   name: string
@@ -98,6 +122,7 @@ export interface Destination {
   transitLabel: string
   transitScore: number
   bestFor: string
+  opening: OpeningSchedule
   mapStyle: MapStyle
   routeTitle: string
   routeNote: string

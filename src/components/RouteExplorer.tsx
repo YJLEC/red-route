@@ -142,6 +142,16 @@ export function RouteExplorer({ destination }: RouteExplorerProps) {
                 <text x="5" y="97">山脚</text><text x="45" y="58">山脊步道</text><text x="72" y="13">峰顶区域</text>
               </g>
             )}
+            {destination.mapStyle === 'village' && (
+              <g className="village-plan">
+                <path className="village-road" d="M2 23H97M8 76H96M23 3V97M79 4V96" />
+                <path className="village-boundary" d="M6 8H45V40H6ZM55 8H94V40H55ZM6 58H44V92H6ZM56 57H94V92H56Z" />
+                <path className="tunnel-layer" d="M18 28C35 31 40 47 50 52S68 68 83 55" />
+                <circle cx="49" cy="48" r="4" />
+                <text x="8" y="17">纪念馆展厅</text><text x="57" y="17">村落街巷</text><text x="58" y="87">遗址保护区</text>
+                <text x="38" y="59">地下体验段</text>
+              </g>
+            )}
             <path className="route-line" d={mainPath} />
             {branchPaths.map((branch) => <path key={branch.id} className="route-branch-line" d={branch.path} />)}
               <RouteFootsteps segments={[...mainSegments, ...branchPaths.map((branch) => branch.segment)]} />

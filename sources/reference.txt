@@ -98,3 +98,38 @@ sources/research/maps/data-source.md
     发布日期：未标注；获取日期 2026-08-27
     用途：支持河北省轮廓和三个目的地相对位置示意。
     备注：不是导航数据；发布前复核边界表现和地图适用要求。
+
+sources/research/ranzhuang/official-guide.md
+    链接：http://hbhsly.hebeitour.gov.cn/index.php?c=news&a=detail&id=160&cat_id=2
+    来源：河北省文化和旅游厅主办的河北红色旅游专题
+    发布日期：页面未标注；核验日期 2026-08-29
+    用途：支持冉庄正式名称、展厅—地道—遗址保护区三段关系、地道尺度、核心遗址、区域位置和图片候选。
+    备注：HTTPS 证书过期，HTTP 正文可读；不含当前常规开放和图片复用许可。
+
+sources/research/ranzhuang/official-guide.md（2026 春节、五一公告）
+    链接：https://m.bd.bendibao.com/tour/35591.shtm；https://m.bd.bendibao.com/tour/36138.shtm
+    来源：保定本地宝转载署名“冉庄地道战纪念馆”的公告
+    发布日期：2026-02-13、2026-04-30；核验日期 2026-08-29
+    用途：支持 9:00–16:30、预约与证件核验、服务电话、节假日例外和临时停车摆渡边界。
+    备注：属于官方内容的二次转载；交通组织只适用于对应假期，不推为常态。
+
+sources/research/multi-destination/connection-matrix.md
+    链接：https://router.project-osrm.org/route/v1/driving/；六组具体查询 URL 见研究文件
+    来源：Project OSRM / OpenStreetMap 静态道路数据，配合各目的地官方交通页面
+    发布日期：动态查询；核验日期 2026-08-29
+    用途：支持四地六组自驾距离与耗时范围、主要途经关系及公共交通可用性判断。
+    备注：不是中国实时导航；页面必须展示缓冲范围，并提示出发当天使用合规导航核验。
+
+sources/research/multi-destination/meal-and-stay-bases.md
+    链接：https://www.xbpjng.cn/columns/1f104a4c-cfc5-440a-93f1-ad289760b891/202406/04/c9af72e5-e376-47ff-9274-c195b8910db9.html；http://www.lysjq.net/canyin.html；http://www.xn--z6qr1l12gz0dys0f.cn/
+    来源：西柏坡纪念馆、狼牙山景区、冉庄地道战纪念馆及地方政府页面
+    发布日期：各页面未统一标注；核验日期 2026-08-29
+    用途：支持石家庄、保定、易县等区域级午餐与住宿落点，不推荐具体商家。
+    备注：不支持实时营业、价格、房态或库存承诺；冉庄村不作为默认正餐或住宿落点。
+
+sources/research/multi-destination/opening-hours.md
+    链接：四地 11 条具体官方来源见研究文件
+    来源：河北博物院、西柏坡纪念馆、狼牙山景区、冉庄地道战纪念馆及清苑文旅
+    发布日期：各公告日期见研究文件；核验日期 2026-08-29
+    用途：支持四地常规开放日、季节时段、停止入场、闭馆、预约、证件和节假日/天气例外。
+    备注：河北博物院与狼牙山官网内部存在时段冲突，页面必须并列展示，规划器只使用明确标注的保守边界。

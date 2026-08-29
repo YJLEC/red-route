@@ -1,0 +1,94 @@
+{
+  "capturedAt": "2026-08-29",
+  "url": "https://red-route.yjlec.top/",
+  "screenshotStatus": "Browser screenshot API unavailable; DOM and geometry baseline captured.",
+  "results": [
+    {
+      "name": "desktop-1440x900",
+      "width": 1440,
+      "height": 900,
+      "before": {
+        "fallbackCount": 3,
+        "h1": "河北红色旅游地图",
+        "map": {
+          "height": 594,
+          "width": 775
+        },
+        "markerCount": 3,
+        "nav": [
+          "河北总览",
+          "河北博物院",
+          "西柏坡",
+          "狼牙山"
+        ],
+        "overflowX": 0,
+        "summary": "河北博物院红色展厅",
+        "title": "数忆红途 | 河北红色旅游指南"
+      },
+      "after": {
+        "active": "西柏坡石家庄市平山县",
+        "focus": "matrix(1, 0, 0, 1, 0, 0)",
+        "popupCount": 1,
+        "summary": "西柏坡革命旧址"
+      }
+    },
+    {
+      "name": "tablet-768x1024",
+      "width": 768,
+      "height": 1024,
+      "before": {
+        "fallbackCount": 3,
+        "h1": "河北红色旅游地图",
+        "map": {
+          "height": 540,
+          "width": 705
+        },
+        "markerCount": 3,
+        "nav": [
+          "河北总览",
+          "河北博物院",
+          "西柏坡",
+          "狼牙山"
+        ],
+        "overflowX": 0,
+        "summary": "河北博物院红色展厅",
+        "title": "数忆红途 | 河北红色旅游指南"
+      },
+      "after": {
+        "active": "西柏坡石家庄市平山县",
+        "focus": "matrix(1, 0, 0, 1, 0, 0)",
+        "popupCount": 1,
+        "summary": "西柏坡革命旧址"
+      }
+    },
+    {
+      "name": "mobile-390x844",
+      "width": 390,
+      "height": 844,
+      "before": {
+        "fallbackCount": 3,
+        "h1": "河北红色旅游地图",
+        "map": {
+          "height": 560,
+          "width": 345
+        },
+        "markerCount": 3,
+        "nav": [
+          "河北总览",
+          "河北博物院",
+          "西柏坡",
+          "狼牙山"
+        ],
+        "overflowX": 0,
+        "summary": "河北博物院红色展厅",
+        "title": "数忆红途 | 河北红色旅游指南"
+      },
+      "after": {
+        "active": "西柏坡石家庄市平山县",
+        "focus": "matrix(1, 0, 0, 1, 0, 0)",
+        "popupCount": 1,
+        "summary": "西柏坡革命旧址"
+      }
+    }
+  ]
+}

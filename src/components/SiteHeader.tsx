@@ -1,7 +1,7 @@
 import { Map, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { destinations } from '../data/destinations'
+import { homeDestinations } from '../data/destinations'
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
@@ -24,7 +24,7 @@ export function SiteHeader() {
         </button>
         <nav className={open ? 'site-nav is-open' : 'site-nav'} aria-label="主导航">
           <NavLink to="/" end onClick={() => setOpen(false)}>河北总览</NavLink>
-          {destinations.map((destination) => (
+          {homeDestinations.map((destination) => (
             <NavLink key={destination.id} to={`/destination/${destination.id}`} onClick={() => setOpen(false)}>
               {destination.shortName}
             </NavLink>

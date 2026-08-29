@@ -27,6 +27,23 @@ export const destinations: Destination[] = [
     transitLabel: '地铁直达',
     transitScore: 5,
     bestFor: '亲子、长者、城市短途游客',
+    opening: {
+      status: 'conflicting',
+      regularDays: '周二至周日',
+      openWeekdays: [0, 2, 3, 4, 5, 6],
+      periods: [
+        { label: '2026-03-12 调整公告', openTime: '09:00', closeTime: '17:00', lastEntryTime: '16:30' },
+        { label: '官网当前服务页', openTime: '08:30', closeTime: '18:30', lastEntryTime: '18:00' },
+      ],
+      closedDays: ['周一（法定节假日另行公告）'],
+      reservation: '实名限额、分时段预约；通常提前 7 日开放',
+      exceptions: '官网两处当前信息不一致。规划时按 09:00-17:00、16:30 停止入馆留出保守余量，但这不是对官方冲突的裁决；具体展厅也可能临时调整。',
+      sources: [
+        { label: '开放时间调整公告', url: 'https://www.hebeimuseum.org.cn/show-79-12311-1.html' },
+        { label: '当前参观服务页', url: 'https://www.hebeimuseum.org.cn/list-1-1.html' },
+      ],
+      verifiedAt: '2026-08-29',
+    },
     mapStyle: 'floor',
     routeTitle: '北区二层展厅顺序',
     routeNote: '以下顺序依据常设陈列的四个单元整理，是理解展览叙事的参观建议，不替代现场导览。',
@@ -113,6 +130,23 @@ export const destinations: Destination[] = [
     transitLabel: '市区专线 / 自驾',
     transitScore: 3,
     bestFor: '历史爱好者、研学团队、半日游客',
+    opening: {
+      status: 'confirmed',
+      regularDays: '周二至周日',
+      openWeekdays: [0, 2, 3, 4, 5, 6],
+      periods: [
+        { label: '夏季（5 月 1 日至 10 月 31 日）', openTime: '09:00', closeTime: '17:00', lastEntryTime: '16:30' },
+        { label: '冬季（11 月 1 日至次年 4 月 30 日）', openTime: '09:30', closeTime: '17:00', lastEntryTime: '16:30' },
+      ],
+      closedDays: ['周一（法定节假日除外）'],
+      reservation: '通过“西柏坡纪念馆”微信公众号实名预约',
+      exceptions: '暴雨、检修和法定节假日可能覆盖常规日历；本时段直接对应纪念馆，旧址群内单体空间仍以现场开放标识为准。',
+      sources: [
+        { label: '开放时间调整公告', url: 'https://www.xbpjng.cn/columns/0375790e-cdc7-4220-89d6-a849d6fc8a1f/202506/25/eaa43e42-aa67-4e57-9f82-457d0733c9fe.html' },
+        { label: '西柏坡参观指南', url: 'https://www.xbpjng.cn/columns/1f104a4c-cfc5-440a-93f1-ad289760b891/202406/04/1bd56ab7-4784-4d35-bcc2-29eb6b5db8e3.html' },
+      ],
+      verifiedAt: '2026-08-29',
+    },
     mapStyle: 'campus',
     routeTitle: '纪念馆与中共中央旧址串联',
     routeNote: '先在纪念馆建立时间线，再进入旧址群对应实地空间。点位顺序为基于官方景点名录整理的建议路线。',
@@ -179,6 +213,26 @@ export const destinations: Destination[] = [
     transitLabel: '自驾更稳妥',
     transitScore: 2,
     bestFor: '体力较好游客、户外爱好者、完整一日行程',
+    opening: {
+      status: 'conflicting',
+      regularDays: '景区官网列示周一至周日；天气和安全管理可能临时调整',
+      openWeekdays: [0, 1, 2, 3, 4, 5, 6],
+      periods: [
+        { label: '景区夏季 · 官网首页', openTime: '07:20', closeTime: '17:30' },
+        { label: '景区夏季 · 参观须知', openTime: '07:20', closeTime: '17:00', lastEntryTime: '17:00' },
+        { label: '景区冬季 · 官网首页', openTime: '08:00', closeTime: '16:00' },
+        { label: '景区冬季 · 参观须知', openTime: '07:50', closeTime: '16:30', lastEntryTime: '16:30' },
+        { label: '五勇士陈列馆', openTime: '09:00', closeTime: '17:00', lastEntryTime: '16:30' },
+      ],
+      closedDays: ['官网未列固定闭馆日'],
+      reservation: '陈列馆凭有效证件入馆；集体参观提前预约',
+      exceptions: '官网没有说明夏冬季日期边界，且两个页面的景区时段冲突。登山、天气和步道管理还会改变实际可游范围，必须在出发前核验。',
+      sources: [
+        { label: '狼牙山景区官网首页', url: 'http://www.lysjq.net/' },
+        { label: '五勇士陈列馆参观须知', url: 'http://www.lysjq.net/xuzhi.html' },
+      ],
+      verifiedAt: '2026-08-29',
+    },
     mapStyle: 'mountain',
     routeTitle: '从陈列馆到纪念塔的山地路线',
     routeNote: '路线按主要纪念点的空间与叙事关系整理；景区交通、步道开放和实际耗时受天气、体力与现场管理影响。',
@@ -227,7 +281,102 @@ export const destinations: Destination[] = [
     ],
     verifiedAt: '2026-08-27',
   },
+  {
+    id: 'ranzhuang-tunnel',
+    name: '冉庄地道战纪念馆',
+    shortName: '冉庄',
+    city: '保定市清苑区',
+    category: '地道战遗址与纪念馆',
+    theme: '从展厅进入真实地下空间，理解冀中平原地道战体系',
+    tagline: '展陈、地道与村落遗址连成一体的空间体验',
+    overview:
+      '完整参观由新馆展厅、开放地道段和村落遗址保护区三部分组成。这里最鲜明的体验不是观看单一展柜，而是把地下通道、地面工事和村落环境联系起来理解。',
+    coordinates: [115.36325, 38.66887],
+    duration: '建议 2-3 小时',
+    intensity: '中',
+    environment: '室内展陈 + 狭窄地道 + 村落遗址',
+    transitLabel: '自驾更稳妥 / 客运需核验',
+    transitScore: 2,
+    bestFor: '历史体验游客、研学团队、愿意进入地下空间的家庭游客',
+    opening: {
+      status: 'confirmed',
+      regularDays: '周二至周日',
+      openWeekdays: [0, 2, 3, 4, 5, 6],
+      periods: [
+        { label: '常规时段', openTime: '09:00', closeTime: '16:30', lastEntryTime: '16:30' },
+      ],
+      closedDays: ['周一闭馆整修（法定节假日另行公告）'],
+      reservation: '官方公众号预约；身份证或预约二维码核验',
+      exceptions: '16:30 同时被官方写作清场闭馆和停止进入时间，网站不虚构额外清场时段；节假日可能另行开放，地道等具体区域也可能临时关闭。',
+      sources: [
+        { label: '纪念馆常规开放公告', url: 'https://mp.weixin.qq.com/s?__biz=MzIxNjMzMzE2Nw%3D%3D&mid=2247498460&idx=1' },
+        { label: '清苑文旅 2026 春节须知', url: 'https://mp.weixin.qq.com/s?__biz=Mzg4MTUxNTI3NQ%3D%3D&mid=2247501931&idx=1' },
+      ],
+      verifiedAt: '2026-08-29',
+    },
+    mapStyle: 'village',
+    routeTitle: '从展厅进入地道，再到村落遗址',
+    routeNote: '以下只表达官方文字确认的三部分连接关系，不代表当前开放地道的逐点导航；入口、出口和开放范围以现场指引为准。',
+    guideMapSource: {
+      label: '河北省文旅厅冉庄地道战专题资料',
+      url: 'http://hbhsly.hebeitour.gov.cn/index.php?c=news&a=detail&id=160&cat_id=2',
+    },
+    gallery: placeholderGallery('ranzhuang', '冉庄地道战纪念馆', ['纪念馆入口', '主题展厅', '开放地道段', '村落遗址保护区']),
+    mapFeatures: [
+      { id: 'museum-entry', label: '纪念馆入口', type: 'entrance', x: 12, y: 24 },
+      { id: 'check-in', label: '预约核验与安检', type: 'service', x: 13, y: 43 },
+      { id: 'protected-area', label: '遗址保护区', type: 'landmark', x: 83, y: 72 },
+      { id: 'cross-street', label: '十字街区域', type: 'landmark', x: 82, y: 37 },
+    ],
+    travelMap: {
+      title: '保定市区至冉庄抵达关系图',
+      scope: '保定市区经清苑方向至冉庄镇',
+      sourceNote: '依据河北省文旅专题和公开参观攻略重绘区域关系；城乡客运没有当前运营方班次，不能据此直接候车。',
+      sourceLabel: '河北省文旅厅专题与冉庄参观攻略',
+      sourceUrl: 'http://hbhsly.hebeitour.gov.cn/index.php?c=news&a=detail&id=160&cat_id=2',
+      nodes: [
+        { id: 'baoding', label: '保定市区', detail: '城市交通与住宿落点', x: 13, y: 76 },
+        { id: 'qingyuan', label: '清苑方向', detail: '京港澳高速清苑出口区域', x: 47, y: 55 },
+        { id: 'ranzhuang-town', label: '冉庄镇', detail: '进入村落道路', x: 70, y: 39 },
+        { id: 'ranzhuang', label: '冉庄地道战纪念馆', detail: '预约核验后入馆', x: 84, y: 23, primary: true },
+      ],
+      lines: [
+        { id: 'ranzhuang-car', label: '自驾区域关系', path: 'M13 76 C28 69 37 62 47 55 S62 45 70 39 S79 29 84 23', mode: 'car', caution: '节假日停车与摆渡按当期公告执行。' },
+      ],
+    },
+    spots: [
+      { id: 'ranzhuang-1', order: 1, name: '展厅序厅', summary: '先建立冀中平原地道战的背景。', detail: '展厅以“抗战奇观，地下长城”为主题，建议先理解地道形成、发展和地上地下联防方式，再进入真实空间。', transfer: '由纪念馆入口完成预约核验与安检后进入', duration: '建议约 15 分钟', x: 20, y: 27 },
+      { id: 'ranzhuang-2', order: 2, name: '冀中地道战主题展陈', summary: '用文物、照片和图表理解地道战体系。', detail: '展陈以冉庄地道战为重点；完整浏览后再进入地道，可减少只把地下空间当作新奇体验的偏差。', transfer: '由序厅步行进入主题展陈', duration: '建议约 30-45 分钟', x: 40, y: 27 },
+      { id: 'ranzhuang-3', order: 3, name: '展厅内地道入口', summary: '从展厅直接进入村内地道网。', detail: '这是官方资料明确支持的关键空间连接。进入前应评估行动能力和对狭窄封闭空间的适应程度。', transfer: '按现场工作人员指引进入', duration: '约 5 分钟', x: 49, y: 48 },
+      { id: 'ranzhuang-4', order: 4, name: '开放地道体验段', summary: '在真实尺度中理解地下通行与防御。', detail: '一般地道宽约 0.7-0.8 米、高约 1-1.5 米。当前开放长度、通行方向和出口必须以现场管理为准。', transfer: '沿当日开放地道段通行', duration: '随开放路线和客流变化', x: 65, y: 67 },
+      { id: 'ranzhuang-5', order: 5, name: '遗址保护区与十字街', summary: '回到地面理解村落工事与地道联动。', detail: '保护区保留街道作战工事、抗日标语、伪装地道口主题和十字街古槐等遗址，不要离开开放区域寻找未开放入口。', transfer: '由地道出口按现场导引进入保护区', duration: '建议约 45-60 分钟', x: 82, y: 54 },
+    ],
+    arrivals: [
+      { mode: '公共交通', title: '先到保定，再核验城乡客运', detail: '历史攻略提到保定至周边乡镇方向班车，但没有运营方当前站点、班次、票价和购票页面。', caution: '不要把未经确认的城乡客运作为唯一去程或返程方案。', sourceLabel: '冉庄地道战纪念馆参观攻略', sourceUrl: 'https://m.bd.bendibao.com/tour/33793.shtm', verifiedAt: '2026-08-29' },
+      { mode: '自驾', title: '经清苑方向前往冉庄镇', detail: '河北省文旅资料显示遗址距京港澳高速清苑出口约 19 公里，适合用作区域方向判断，实际道路以当日导航为准。', sourceLabel: '河北省文旅厅冉庄地道战专题资料', sourceUrl: 'http://hbhsly.hebeitour.gov.cn/index.php?c=news&a=detail&id=160&cat_id=2', verifiedAt: '2026-08-29' },
+      { mode: '换乘提示', title: '节假日停车与摆渡不是常态服务', detail: '2026 年春节和五一曾使用外围应急停车场与免费摆渡车，但地点和组织方式属于当期临时安排。', caution: '节假日出发前先查看最新交通公告，不要照搬往期停车方案。', sourceLabel: '2026 年五一参观攻略', sourceUrl: 'https://m.bd.bendibao.com/tour/36138.shtm', verifiedAt: '2026-08-29' },
+    ],
+    preparations: ['提前通过官方公众号确认预约规则并准备身份证或预约二维码', '穿便于步行和弯腰的鞋服', '老人和儿童进入地道段时由同行人员全程照看', '行动不便或对封闭空间敏感者可跳过地道段', '节假日自驾先核验临时停车与交通管制'],
+    advisory: '2026 年春节、五一公告均采用预约制，开放时段为 9:00-16:30，并在 16:30 停止游客进入；常规周一闭馆仍主要依据 2025 年资料，节假日可能另行开放。出发前请通过“冉庄地道战纪念馆”公众号或服务电话 0312-8036558、0312-8036158 核验。',
+    officialUrl: 'http://www.xn--z6qr1l12gz0dys0f.cn/',
+    navigationUrl: 'https://uri.amap.com/search?keyword=%E5%86%89%E5%BA%84%E5%9C%B0%E9%81%93%E6%88%98%E7%BA%AA%E5%BF%B5%E9%A6%86',
+    sources: [
+      { title: '纪念馆官网与参观须知', publisher: '保定市清苑区冉庄地道战纪念馆', url: 'http://www.xn--z6qr1l12gz0dys0f.cn/', verifiedAt: '2026-08-29' },
+      { title: '冉庄地道战专题资料', publisher: '河北省文化和旅游厅', url: 'http://hbhsly.hebeitour.gov.cn/index.php?c=news&a=detail&id=160&cat_id=2', verifiedAt: '2026-08-29' },
+      { title: '2026 年春节假期参观须知', publisher: '冉庄地道战纪念馆（转载）', url: 'https://m.bd.bendibao.com/tour/35591.shtm', verifiedAt: '2026-08-29' },
+      { title: '2026 年五一假期参观攻略', publisher: '冉庄地道战纪念馆（转载）', url: 'https://m.bd.bendibao.com/tour/36138.shtm', verifiedAt: '2026-08-29' },
+    ],
+    verifiedAt: '2026-08-29',
+  },
 ]
+
+const homeDestinationIds: DestinationId[] = ['hebei-museum', 'xibaipo', 'langya-mountain']
+
+export const homeDestinations = homeDestinationIds.map((id) => {
+  const destination = destinations.find((item) => item.id === id)
+  if (!destination) throw new Error(`首页目的地数据缺失：${id}`)
+  return destination
+})
 
 export function getDestination(id: string | undefined): Destination | undefined {
   return destinations.find((destination) => destination.id === id)
